@@ -1,6 +1,6 @@
 import passport from "passport";
 import googleOauth20 from 'passport-google-oauth20';
-import { User } from "../models/user.models.js";
+import  User  from "../models/user.models.js";
 
 
 const googleStategy = googleOauth20.Strategy;

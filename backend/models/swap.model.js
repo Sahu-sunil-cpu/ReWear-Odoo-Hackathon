@@ -17,4 +17,4 @@ const swapRequestSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const SwapModel = mongoose.model("SwapItem", swapRequestSchema);
+export default SwapModel = mongoose.model("SwapItem", swapRequestSchema);

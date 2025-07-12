@@ -1,7 +1,7 @@
 import validator from "validator";
 import jwt from "jsonwebtoken";
 import { redis } from "../util/redis.js";
-import { User } from "../models/user.models.js";
+import  User  from "../models/user.models.js";
 import { userValidationSchema } from "../validation-schema/userschema.js";
 import bcrypt from 'bcryptjs'
 

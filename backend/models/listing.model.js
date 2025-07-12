@@ -9,7 +9,6 @@ const listingSchema = new mongoose.Schema(
     condition: String,
     size: String,
     brand: String,
-    tags: [String],
     images: [String],
     pointsValue: Number,
     status: {
@@ -22,4 +21,6 @@ const listingSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const ItemList = mongoose.model("Listing", listingSchema);
+const Listing = mongoose.model("Listing", listingSchema)
+
+export default Listing ;
