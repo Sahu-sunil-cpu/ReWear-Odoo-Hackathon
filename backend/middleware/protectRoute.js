@@ -7,6 +7,8 @@ export const protectRoute = async (req, res, next) => {
         console.log("user req cookies in protect route :", req.cookies);
         const accessToken = req.cookies.accessToken;
 
+        console.log("accesstoken :: ",accessToken);
+
         if (!accessToken) {
             return res.status(400).json({ error: "Unauthorized : no token provided" });
         }

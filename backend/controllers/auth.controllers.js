@@ -8,7 +8,7 @@ import bcrypt from 'bcryptjs'
 
 function generateToken(userID) {
   let accessToken = jwt.sign({ userID }, process.env.ACCESS_TOKEN, {
-    expiresIn: "15m",
+    expiresIn: "7d",
   });
   let refreshToken = jwt.sign({ userID }, process.env.REFRESH_TOKEN, {
     expiresIn: "7d",
@@ -21,7 +21,8 @@ function generateToken(userID) {
 
 function setCookies(res, accessToken, refreshToken) {
   res.cookie("accessToken", accessToken, {
-    maxAge: 15 * 60 * 1000,
+    // maxAge: 15 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     sameSite: "none",
     secure: process.env.NODE_ENV === "production",
@@ -74,7 +75,7 @@ export const signup = async (req, res) => {
     const newUser = new User({
       username,
       email,
-      password : hashedPassword,
+      password: hashedPassword,
     });
     await newUser.save();
 
@@ -86,8 +87,12 @@ export const signup = async (req, res) => {
     setRefreshTokenOnRedis(newUser._id, refreshToken);
 
     return res.status(200).json({
-      username: newUser.username,
-      email: newUser.email,
+      data: {
+
+        username: newUser.username,
+        email: newUser.email,
+        userId: newUser._id
+      }
     });
   } catch (error) {
     console.log("Error in signup controllers :", error);
@@ -126,8 +131,11 @@ export const login = async (req, res) => {
     setRefreshTokenOnRedis(user._id, refreshToken);
 
     return res.status(200).json({
-      username: user.username,
-      email: user.email,
+      data: {
+        username: user.username,
+        email: user.email,
+        userId: user._id
+      }
     });
   } catch (error) {
     console.log("Error in login controllers :", error);
@@ -190,3 +198,21 @@ export const refreshToken = async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const profile = async (req, res) => {
+  try {
+
+    const userId = req.user._id;
+
+    const userProfile = await User.findById(userId);
+    if (!userProfile) {
+      return res.status(404).json({ error: "User not found" })
+    }
+
+    return res.status(200).json({ username: userProfile.username, email: userProfile.email, userId: userId });
+
+  } catch (error) {
+    console.log("Error in refreshToken controllers :", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
