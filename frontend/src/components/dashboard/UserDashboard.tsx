@@ -10,7 +10,6 @@ export const UserDashboard: React.FC = () => {
     points: 1250,
     swapsCompleted: 23,
     itemsListed: 15,
-    rating: 4.9,
     joinDate: 'March 2024'
   };
 
@@ -20,7 +19,6 @@ export const UserDashboard: React.FC = () => {
       name: 'Vintage Floral Dress', 
       image: 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg',
       points: 120,
-      views: 45,
       status: 'Active'
     },
     { 
@@ -28,7 +26,6 @@ export const UserDashboard: React.FC = () => {
       name: 'Designer Denim Jacket', 
       image: 'https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg',
       points: 180,
-      views: 67,
       status: 'Active'
     },
     { 
@@ -36,7 +33,6 @@ export const UserDashboard: React.FC = () => {
       name: 'Classic White Sneakers', 
       image: 'https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg',
       points: 90,
-      views: 23,
       status: 'Swapped'
     },
     { 
@@ -44,7 +40,6 @@ export const UserDashboard: React.FC = () => {
       name: 'Silk Blouse', 
       image: 'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg',
       points: 100,
-      views: 34,
       status: 'Active'
     }
   ];
@@ -145,13 +140,6 @@ export const UserDashboard: React.FC = () => {
                 <div className="text-xl font-bold text-gray-800">{userStats.itemsListed}</div>
                 <div className="text-sm text-gray-600">Listed</div>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <Star className="w-6 h-6 text-yellow-600" />
-                </div>
-                <div className="text-xl font-bold text-gray-800">{userStats.rating}</div>
-                <div className="text-sm text-gray-600">Rating</div>
-              </div>
             </div>
           </div>
         </motion.div>
@@ -191,7 +179,6 @@ export const UserDashboard: React.FC = () => {
                   <h3 className="font-semibold text-gray-800 mb-2 truncate">{item.name}</h3>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-green-600 font-bold">{item.points} pts</span>
-                    <span className="text-gray-600">{item.views} views</span>
                   </div>
                 </div>
               </motion.div>
@@ -229,48 +216,6 @@ export const UserDashboard: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
-
-        {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          <Link to="/browse" className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                <TrendingUp className="w-6 h-6 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800">Browse Items</h3>
-                <p className="text-sm text-gray-600">Discover new items to swap</p>
-              </div>
-            </div>
-          </Link>
-          <Link to="/wishlist" className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center group-hover:bg-red-200 transition-colors">
-                <Heart className="w-6 h-6 text-red-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800">Wishlist</h3>
-                <p className="text-sm text-gray-600">View your saved items</p>
-              </div>
-            </div>
-          </Link>
-          <Link to="/profile" className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                <User className="w-6 h-6 text-green-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800">Edit Profile</h3>
-                <p className="text-sm text-gray-600">Update your information</p>
-              </div>
-            </div>
-          </Link>
         </motion.div>
       </div>
     </div>
