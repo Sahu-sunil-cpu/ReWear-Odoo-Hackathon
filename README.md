@@ -16,7 +16,7 @@ Fast fashion is a leading contributor to textile waste and environmental harm. P
 - Providing admin tools to maintain community trust
 
 ---
-[Demo Video](https://img.youtube.com/vi/Muu8G9PlMOQ/0.jpg)](https://www.youtube.com/watch?v=Muu8G9PlMOQ)
+[![Demo Video](https://img.youtube.com/vi/Muu8G9PlMOQ/0.jpg)](https://www.youtube.com/watch?v=Muu8G9PlMOQ)
 
 ---
 
