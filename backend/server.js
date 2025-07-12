@@ -4,6 +4,13 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connectDB } from "./db/connectDB.js";
 import authRoutes from "./routes/auth.routes.js";
+import orderRoutes from "./routes/order.routes.js"
+import adminRoutes from "./routes/admin.routes.js"
+import  listingRoutes from "./routes/listing.routes.js";
+
+
+
+
 
 dotenv.config();
 
@@ -23,6 +30,11 @@ app.get('/',async (req,res) => {
     return res.json({error:"root origin"});
 })
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/order", orderRoutes);
+app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/listings", listingRoutes);
+
+
 
 
 // app.use((err, req, res, next) => {

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
-import { User } from '../models/user.models.js';
+import User from '../models/user.models.js';
 
-export const protectRoute = async (req, res, next) => {
+export const auth = async (req, res, next) => {
     try {
 
         console.log("user req cookies in protect route :", req.cookies);
