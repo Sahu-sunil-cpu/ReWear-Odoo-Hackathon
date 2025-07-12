@@ -1,7 +1,7 @@
 import express from 'express';
 import { login, logout, profile, refreshToken, signup } from '../controllers/auth.controllers.js';
-import { User } from '../models/user.models.js';
-import { passport } from '../config/passport.js'
+// import { User } from '../models/user.models.js';
+// import { passport } from '../config/passport.js'
 import { protectRoute } from '../middleware/protectRoute.js';
 
 const router = express.Router();
