@@ -74,7 +74,6 @@ Make sure to set your environment variables in backend/.env:
 
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/rewear
-JWT_SECRET=yourSuperSecretKey
 
 💻 Run the Frontend
 cd frontend
